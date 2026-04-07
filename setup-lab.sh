@@ -13,7 +13,7 @@ NETWORK="default"
 MAX_RETRIES=3
 
 FGT_RAM=2048; FGT_CPU=1;  FGT_LOG_SIZE="30G"
-FAZ_RAM=4096; FAZ_CPU=2;  FAZ_DATA_SIZE="200G"
+FAZ_RAM=8192; FAZ_CPU=2;  FAZ_DATA_SIZE="100G"
 FMG_RAM=4096; FMG_CPU=2;  FMG_DATA_SIZE="200G"
 
 # ── Colors ───────────────────────────────────────────────────────────────────
@@ -56,7 +56,7 @@ banner() {
 EOF
     echo -e "${RST}"
     echo -e "${D}──────────────────────────────────────────────────────────────────────${RST}"
-    echo -e "${M}               IST Cybersecurity Lab Setup ${RST}"
+    echo -e "${M}              ⚡ IST Cybersecurity Lab Setup ⚡${RST}"
     echo -e "${D}                       crafted by wolf${RST}"
     echo -e "${D}──────────────────────────────────────────────────────────────────────${RST}"
     echo ""
@@ -395,7 +395,7 @@ EXPECT_EOF
 
     echo ""; info "Booting VMs and formatting data/log disks via FortiOS CLI..."; echo ""
     init_fortinet_lvm "FortiGate" 60
-    init_fortinet_lvm "FortiAnalyzer" 90
+    echo -e "  ${D}⊘${RST} FortiAnalyzer — skipped (auto-formats data disk on boot)"
     init_fortinet_lvm "FortiManager" 90
     echo ""
     info "If auto-init failed, run manually:"
