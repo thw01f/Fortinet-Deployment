@@ -405,7 +405,7 @@ EXPECT_EOF
 }
 
 step8_grub() {
-    step_header 8 "GRUB — Windows Default + 5s Timeout"
+    step_header 8 "GRUB — Windows Default + 10s Timeout"
     local grub_file="/etc/default/grub"
     [[ ! -f "$grub_file" ]] && { err "GRUB config not found"; mark_step_done 8; return; }
 
@@ -420,8 +420,8 @@ step8_grub() {
     log "GRUB_DISABLE_OS_PROBER=false"
 
     # ── Timeout 5s ──
-    grep -q "^GRUB_TIMEOUT=" "$grub_file" && sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=5/' "$grub_file" || echo 'GRUB_TIMEOUT=5' | sudo tee -a "$grub_file" > /dev/null
-    log "GRUB_TIMEOUT=5"
+    grep -q "^GRUB_TIMEOUT=" "$grub_file" && sudo sed -i 's/^GRUB_TIMEOUT=.*/GRUB_TIMEOUT=10/' "$grub_file" || echo 'GRUB_TIMEOUT=10' | sudo tee -a "$grub_file" > /dev/null
+    log "GRUB_TIMEOUT=10"
 
     # ── Show menu (not hidden) ──
     sudo sed -i 's/^GRUB_TIMEOUT_STYLE=hidden/GRUB_TIMEOUT_STYLE=menu/' "$grub_file" 2>/dev/null
